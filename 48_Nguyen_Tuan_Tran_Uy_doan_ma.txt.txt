@@ -1,0 +1,105 @@
+# Bài 1: Clone project từ GitHub về máy
+git clone https://github.com/<username>/<STT>_<Ho_ten>_bai_tap.git
+cd <STT>_<Ho_ten>_bai_tap
+
+# Bài 2: Sửa README.md rồi commit và push
+
+git add README.md
+git commit -m "Update README.md với nội dung bài tập"
+git push origin main
+
+# Bài 3: Tạo các nhánh và thêm file tương ứng
+
+git checkout -b branch_1 main
+echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit." > text_branch_1.txt
+git add text_branch_1.txt
+git commit -m "Thêm text_branch_1.txt"
+git push origin branch_1
+
+git checkout main
+git checkout -b branch_2
+echo "Praesent ullamcorper orci eu erat placerat sodales." > text_branch_2.txt
+git add text_branch_2.txt
+git commit -m "Thêm text_branch_2.txt"
+git push origin branch_2
+
+git checkout main
+git checkout -b branch_3
+echo "Integer sit amet nisi aliquam, tempor libero quis, cursus erat." > text_branch_3.txt
+git add text_branch_3.txt
+git commit -m "Thêm text_branch_3.txt"
+git push origin branch_3
+
+git checkout main
+git checkout -b branch_4
+echo -e "Cras ac mi nec nisi porta ultrices sed non ante." > text_branch_4.txt
+git add text_branch_4.txt
+git commit -m "Thêm text_branch_4.txt"
+git push origin branch_4
+
+# Bài 4: Xóa branch_4 trên local và kiểm tra danh sách nhánh
+git checkout main
+git branch -D branch_4
+git branch
+git branch -r
+
+# Bài 5: Cập nhật lại project bằng git pull
+git pull origin main
+
+# Bài 6: Tạo thư mục và file trên main, commit và push, cập nhật các nhánh
+mkdir main_folder
+echo "Nội dung file 1" > main_folder/main_txt_1.txt
+echo "Nội dung file 2" > main_folder/main_txt_2.txt
+echo "Nội dung file 3" > main_folder/main_txt_3.txt
+git add main_folder
+git commit -m "Thêm thư mục main_folder với 3 file txt"
+git push origin main
+
+git checkout branch_1
+git pull origin main
+
+git checkout branch_2
+git pull origin main
+
+git checkout branch_3
+git pull origin main
+
+# Bài 7: Tạo branch_5 từ branch_1, sửa file, commit, push, tạo PR và xóa branch_5
+
+git checkout branch_1
+git checkout -b branch_5
+
+echo "Etiam malesuada felis nulla, ac porta dui sollicitudin eget. Mauris hendrerit non
+metus eget pellentesque. Etiam ornare ante at pretium hendrerit. Proin molestie
+accumsan sapien, ac finibus libero lobortis quis. Praesent ac commodo eros.
+Nullam malesuada vel dui nec feugiat. Cras justo ipsum, scelerisque et elit vitae,
+porttitor tristique turpis. Nam ut hendrerit est. Nulla sed tincidunt nibh. Class
+aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+himenaeos. Quisque vitae egestas lacus. Phasellus turpis ante, euismod quis
+pellentesque et, pharetra id ligula. Vestibulum mattis sem ac ligula auctor viverra.
+Phasellus dignissim mollis leo, vitae tristique enim." > text_branch_1.txt
+
+git add text_branch_1.txt
+git commit -m "Cập nhật text_branch_1.txt trên branch_5"
+git push origin branch_5
+
+# (Trên GitHub tạo Pull Request từ branch_5 sang branch_1, xử lý conflict, merge)
+
+git checkout main
+git branch -d branch_5
+git push origin --delete branch_5
+
+
+# Bài 9: Xóa các nhánh branch_2, branch_3, branch_4 trên local và remote
+git branch -d branch_2
+git branch -d branch_3
+git branch -d branch_4
+
+git push origin --delete branch_2
+git push origin --delete branch_3
+git push origin --delete branch_4
+
+# Cập nhật branch_1 từ main
+git checkout branch_1
+git pull origin main
+git push origin branch_1
